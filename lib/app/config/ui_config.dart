@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class UiConfig {
-  UiConfig._(); //impede que essa classe seja instanciada
+  UiConfig._(); //Construtor Nomeado Privado - impede que essa classe seja instanciada
 
   static final appTheme = ThemeData(
     primaryColor: Color(0xFF9D0000),

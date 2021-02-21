@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashController extends GetxController {
+  // .obs torna a variável observável!!
   final _logged = UserLogged.empty.obs;
 
   UserLogged get logged => _logged.value;
@@ -12,6 +13,7 @@ class SplashController extends GetxController {
   @override
   void onInit() {
     super.onInit();
+    // ever: é um worker que fica escutando algum elemento observável
     ever<UserLogged>(_logged, _checkIsLogged);
     checkLogin();
   }
@@ -22,11 +24,11 @@ class SplashController extends GetxController {
     await 2.seconds.delay();
 
     if (sp.containsKey('user')) {
-      // ir para home
+      // DIRECIONAR para home
       // logged.value = UserLogged.authenticate;
       _logged(UserLogged.authenticate);
     } else {
-      //ir para login
+      // DIRECIONAR para login
       // logged.value = UserLogged.unauthenticate;
       _logged(UserLogged.unauthenticate);
     }
@@ -35,7 +37,8 @@ class SplashController extends GetxController {
   void _checkIsLogged(UserLogged userLogged) {
     switch (userLogged) {
       case UserLogged.authenticate:
-        Get.offAllNamed(HomePage.ROUTE_PAGE);
+        Get.offAllNamed(
+            HomePage.ROUTE_PAGE); // offAllNamed: mata todas as outras páginas
         break;
       case UserLogged.unauthenticate:
         Get.offAllNamed(LoginPage.ROUTE_PAGE);
@@ -43,6 +46,7 @@ class SplashController extends GetxController {
       case UserLogged.empty:
         break;
       default:
+        break;
     }
   }
 }
