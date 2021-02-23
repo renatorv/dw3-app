@@ -32,17 +32,19 @@ class LoginPage extends GetView<LoginController> {
                         return null;
                       },
                     ),
-                    PizzaDeliveryInput(
-                      label: 'Senha',
-                      suffixIcon: Icon(FontAwesome.key),
-                      suffixIconPressed: () {},
-                      obscureText: true,
-                      validator: (String value) {
-                        if (value.length < 6) {
-                          return 'Senha deve conter no mínimo 6 caracteres.';
-                        }
-                        return null;
-                      },
+                    Obx(
+                      () => PizzaDeliveryInput(
+                        label: 'Senha',
+                        suffixIcon: Icon(FontAwesome.key),
+                        suffixIconPressed: controller.showHidePassword,
+                        obscureText: controller.obscureText,
+                        validator: (String value) {
+                          if (value.length < 6) {
+                            return 'Senha deve conter no mínimo 6 caracteres.';
+                          }
+                          return null;
+                        },
+                      ),
                     ),
                   ],
                 ),
@@ -58,7 +60,7 @@ class LoginPage extends GetView<LoginController> {
                 labelColor: Colors.white,
                 // textStyle: TextStyle(fontSize: 18, color: Colors.green),
               ),
-              SizedBox(height: 20),
+              SizedBox(height: 40),
               TextButton(
                 onPressed: () {},
                 child: Text(

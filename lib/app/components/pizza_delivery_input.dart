@@ -30,7 +30,7 @@ class PizzaDeliveryInput extends StatelessWidget {
               )
             : null,
       ),
-      obscureText: obscureText,
+      obscureText: this.obscureText,
       validator: this.validator,
     );
   }

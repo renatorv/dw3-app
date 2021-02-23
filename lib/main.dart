@@ -1,3 +1,4 @@
+import 'package:dw3_pizza_delivery_app/app/config/application_bindings.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -14,6 +15,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: UiConfig.appTheme,
       getPages: UiConfig.routes,
+      initialBinding: ApplicationBindings(),
     );
   }
 }
